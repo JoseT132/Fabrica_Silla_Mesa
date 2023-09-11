@@ -1,0 +1,54 @@
+package com.mycompany.fabricaproductos;
+
+
+public class EjecutarCarpinteria {
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FabricaSillas  fabrica;
+		fabrica = new FabricaSillas();
+		Producto silla = fabrica.crearProducto();
+		silla.ensamblar();
+		fabrica = new FabricaMesa ();
+		Producto mesa = fabrica.crearProducto();
+		mesa.ensamblar();
+	}
+public abstract class FabricaProductos {
+     abstract public Producto crearProducto();
+  
+    }
+public class FabricaMesa extends FabricaProductos {
+
+    public FabricaMesa() {
+    }
+    @Override
+	public Producto crearProducto() {
+		return (Producto) new Mesa();
+ }
+}
+public class FabricaSillas extends FabricaProductos {
+@Override
+	public Producto crearProducto() {
+		return (Producto) new Silla();
+ }
+
+public class Mesa {
+	public void ensamblar() {
+	
+		System.out.println("Ha ensamblado una mesa");
+	}
+
+}
+
+public class Silla implements Producto {
+    @Override
+	public void ensamblar() {
+		
+		System.out.println("Ha ensamblado una silla");
+	}
+
+  
+   public interface Producto {
+    public void ensamblar();
+    
+   } 
+}
